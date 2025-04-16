@@ -5,7 +5,7 @@ Most importantly, you should have pygame installed. If you have pygame installed
 
 ## Procession
 
-###Phase 1: Core Mechanics (~65%)
+### Phase 1: Core Mechanics (~65%)
 - Movement ✅
 - Four Note Action ✅
 - Map Transition Systems ✅
@@ -15,26 +15,26 @@ Most importantly, you should have pygame installed. If you have pygame installed
 - NPC ❌
 - Quest ❌
 
-###Phase2: Skill System (~30%)
+### Phase2: Skill System (~30%)
 - Skill Database Structure ✅
 - Connect Skill Database to Player ✅
 - Trigger Skill ❌
 - Skill Animation ❌
 
-###Phase3: Combat System (~10%)
+### Phase3: Combat System (~10%)
 - Enemy Profile ✅
 - Hitbox ✅
 - Take Damage System ❌
 - Attack System ❌
 
-###Phase4: Polishing & VFX (~30%)
+### Phase4: Polishing & VFX (~30%)
 - Decorate Combo Bar ✅
 - Decorate HP and Stamina Bar ✅
 - SFX ❌
 - Menu ❌
 - Setting ❌
 
-###Phase5: Assets Preparing (0%)
+### Phase5: Assets Preparing (0%)
 - 😭
 
 ## How to Play
