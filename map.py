@@ -1,6 +1,9 @@
 import pygame
 import os
 from map_profiles import MAP_PROFILES
+from npc_profile import NPC_PROFILES
+from npc import NPC
+from enemy import EnemyManager
 
 class Map:
     def __init__(self, name: str, screen_size: tuple, map_dir="assets/background"):
@@ -11,9 +14,11 @@ class Map:
         self.collision_rects = []
         self.transition_zones = {}
         self.barrier_rects = []
+        self.npc_list = []
         self.has_enemies = False
         self.cleared = True
         self.enemy_data = []
+        self.enemy_manager = EnemyManager(None)
         self.scaled_image = None
         self.load()
 
@@ -42,8 +47,36 @@ class Map:
             self.barrier_rects.append(pygame.Rect(0, 540, 50, 540))
             self.barrier_rects.append(pygame.Rect(1870, 540, 50, 540))
 
+        if profile.get("has_npc", False) and profile.get("has_enemies", False):
+            self.cutscene_mode = True
+            self.enemy_manager.set_alpha(0)
+        else:
+            self.cutscene_mode = False
+            self.enemy_manager.set_alpha(255)
+
+
+        npc_names = profile.get("npcs", [])
+        all_npc_data = NPC_PROFILES.get(self.name, [])
+        self.npc_list = [
+            NPC(
+                n["name"],
+                n["x"],
+                n["y"],
+                n["sprite_folder"],
+                n["dialog"],
+                n.get("scale", 1),
+                tuple(n.get("frame_size", (32, 32)))  # 👈 default to 48x48
+            )
+            for n in all_npc_data
+            if n["name"] in npc_names
+        ]
+
     def draw(self, screen):
         screen.blit(self.scaled_image, (0, 0))
+
+    def is_cutscene_mode(self):
+        return self.has_enemies and any(npc.dialog_lines for npc in self.npc_list)
+
 
     def get_collision_rects(self):
         return self.collision_rects + (self.barrier_rects if not self.cleared else [])
@@ -59,6 +92,14 @@ class Map:
                     "player_pos": data["player_pos"]
                 }
         return None
+
+    def update_npcs(self, dt):
+        for npc in self.npc_list:
+            npc.update(dt)
+
+    def draw_npcs(self, screen):
+        for npc in self.npc_list:
+            npc.draw(screen)
 
     @staticmethod
     def fade(screen, color=(0, 0, 0), speed=10):

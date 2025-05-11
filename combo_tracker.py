@@ -1,4 +1,5 @@
 from collections import deque
+from note_type import NoteType
 import pygame
 
 class ComboTracker:
@@ -75,6 +76,9 @@ class ComboTracker:
 
     def is_success(self):
         return self.success
+
+    def has_note(self, note_type):
+        return note_type in self.combo
 
     def get_combo(self):
         return self.combo.copy()

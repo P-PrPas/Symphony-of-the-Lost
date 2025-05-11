@@ -10,3 +10,6 @@ class KeyPressManager:
         else:
             self.held_keys.discard(key)
         return False
+
+    def is_key_held(self, key, keys):
+        return keys[key]

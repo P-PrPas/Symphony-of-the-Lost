@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Symphony-of-the-Lost
 
 ## How to setup
@@ -53,3 +54,10 @@ However, as previously said, our Combo system is not yet finalized. We can now d
 Finally, we have a cute little slime on the left. Everyone can walk over to see it, but you can't kill it yet because the combat system isn't finished yet😿
 
 
+=======
+# Installation
+ - pygame: python -m pip install pygame
+
+# How to play
+ - 
+>>>>>>> cccae2a (v1.0)
