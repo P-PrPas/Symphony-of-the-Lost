@@ -21,8 +21,4 @@ Most importantly, you should have pygame installed. If you have pygame installed
 
 - Setting: For settings, adjusting the volume is available immediately, but toggling the hitboxes on and off requires a new game run.
 
-However, as previously said, our Combo system is not yet finalized. We can now display the notes, but there are still many elements to work on (the strike beat animation is still experiencing issues), so you may not be able to view the entire image. We apologize about that
-
-Finally, we have a cute little slime on the left. Everyone can walk over to see it, but you can't kill it yet because the combat system isn't finished yet😿
-
 
